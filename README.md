@@ -47,4 +47,5 @@ $ git push -u origin master
 
 ```bash
 $ npm run deploy
+npm run docs:deploy
 ```

@@ -56,7 +56,7 @@ export default defineConfig({
     },
     {
       title: 'GitHub',
-      path: 'https://github.com/yq979292/cimi-react',
+      path: 'https://github.com/bingzi88/bimi-react',
     },
   ],
 });
