@@ -27,7 +27,7 @@ jobs:
       - name: Auto Deploy
         env:
           GH_REF: github.com/bingzi88/bimi-react.git # github仓库地址http
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # github token
+          ACCESS_TOKEN: ${{ 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 }} # github token
           GITEE_REF: gitee.com/bingzi88/bimi-react.git  # gitee仓库地址,[gitee usename]替换为自己的gitee用户名
           GITEE_TOKEN: ${{ 5d069fa00b5a5dfb61255b9a36beeca1}} # gitee 私人令牌
         run: |
