@@ -1,7 +1,5 @@
-import React from 'react';
-import './Alert.modules.less';
-declare const Alert: ({ type, message }: {
-    type?: string | undefined;
-    message: any;
-}) => React.JSX.Element;
+import { FC } from 'react';
+import { AlertProps } from './interface';
+import './Alert.module.less';
+declare const Alert: FC<AlertProps>;
 export default Alert;

@@ -1,7 +1,8 @@
 {
   "private": false,
   "name": "bimi-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
+
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

@@ -1,15 +1,14 @@
 import React from 'react';
 import Divider from '..';
 
-export default () => {
+export default function index1() {
   return (
-    <div>
-      <p>实线</p>
-      <Divider type='solid' />
-      <p>虚线</p>
-      <Divider type='dashed' />
-      <p>点状</p>
-      <Divider type='dotted' />
+    <div style={{ display: 'flex' }}>
+      <span>雨纷纷</span>
+      <Divider direction="vertical"></Divider>
+      <span>旧故里</span>
+      <Divider direction="vertical"></Divider>
+      <span>草木深</span>
     </div>
   );
-};
+}

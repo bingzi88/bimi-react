@@ -1,5 +1,11 @@
-/**
- * Alert 组件
- * @param {string} type - 提示类型 (success, info, warning, error)
- * @param {string} message - 提示消息
- */
+export interface AlertProps {
+  title?: string;
+  type?: string;
+  closable?: boolean;
+  center?: boolean;
+  closeText?: string;
+  LimeGreen?: boolean;
+  CoolGray?: boolean;
+  Goldenrod?: Boolean;
+  Coral?: Boolean;
+}

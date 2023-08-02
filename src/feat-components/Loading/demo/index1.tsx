@@ -1,12 +1,10 @@
 import React from 'react';
 import Loading from '..';
 
-export default () => {
+export default function AvatarDemo() {
   return (
-    <div>
-      <h1>Loading Component</h1>
-      <Loading size="60px" color="#ff0000" />
-      <p>Loading...</p>
+    <div style={{ height: '150px' }}>
+      <Loading size="sm" text="" />
     </div>
   );
-};
+}

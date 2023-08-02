@@ -5,27 +5,25 @@ nav:
   order: 1
 group:
   title: 基础
-  order: 5
+  order: 1
 ---
 
 # Divider 分割线
 
-我们对边框进行统一规范，可用于按钮、卡片、弹窗等组件里。
+区隔内容的分割线。
 
-## 基础用法
+### 基本使用
 
-对不同段落的文本进行分割。
+> 对不同章节的文本段落进行分割 <code src="./demo/index1.tsx" />
 
-<code src="./demo/index1.tsx" />
+### 设置方案
 
+> 可以在分割线上自定义文案内容 <code src="./demo/index2.tsx" />
 
+### 垂直分割
 
+> 垂直分割段落 <code src='./demo/index3.tsx'/>
 
-## 虚线
+### Divider 参数说明
 
-您可以设置分隔符的样式。
-
-<code src="./demo/index3.tsx" />
-
-
-<API>
+<API></API>

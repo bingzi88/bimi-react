@@ -5,24 +5,35 @@ nav:
   order: 1
 group:
   title: 基础
-  order: 4
+  order: 3
 ---
 
-# SWitch 开关基础用法
+# Switch 开关
 
-最基本的使用
+> 常用的开关组件
 
-#### 啥时候使用
+### 基本用法
 
-。需要表示开关状态/两种状态之间的切换时<br> 。和 checkbox 的区别是，切换 switch 切换 switch 会直接出发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合
+> switch 开关的基本用法 value 可以设置状态
 
-#### 基本用法
+<code src="./demo/index1.tsx" />
 
- <code src="./demo/index1.tsx" />
- 
- 
-#### 文字
+### 设置宽高
 
+> 设置 width 和 height 控制开关宽高
 
- <code src="./demo/index2.tsx" />
-<API></API>
+<code src="./demo/index2.tsx" />
+
+### 是否禁用
+
+> 通过 disabled 设置开关是否禁用
+
+<code src="./demo/index3.tsx" />
+
+### 设置事件
+
+> 通过 handleClick 设置自定义事件 <code src="./demo/index4.tsx" />
+
+### Switch 参数说明
+
+<API>

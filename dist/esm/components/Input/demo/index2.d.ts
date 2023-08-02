@@ -1,3 +1,2 @@
-import React from "react";
-declare const App: () => React.JSX.Element;
-export default App;
+import React from 'react';
+export default function index2(): React.JSX.Element;

@@ -1,29 +1,10 @@
- import React,{useState} from "react";
- import Input from '..'
+import React from 'react';
+import Input from '..';
 
- 
- 
- const App = () => {
-   const [inputValue, setInputValue] = useState("");
- 
-   const handleInputChange = (value?:any) => {
-     setInputValue(value);
-   };
- 
-   return (
-     <div>
- 
-       <Input
-         value={inputValue}
-         onChange={handleInputChange}
-         placeholder="请输入..."
-         disabled={false}
-     
-       />
- 
-     </div>
-   );
- };
- 
- export default App;
- 
+export default function index2() {
+  return (
+    <div>
+      <Input defaultValue="禁用" disabled={true} />
+    </div>
+  );
+}

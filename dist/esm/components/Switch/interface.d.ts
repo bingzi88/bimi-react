@@ -1,20 +1,24 @@
 export interface SwitchProps {
     /**
-     * @description   开关的初识状态
-     * @default false/true
+     * @description 宽度
+     * @default 75px
      */
-    isOn?: boolean;
+    width?: any;
     /**
-     * @description 单击开关时的回调函数
-     * @default  无
+     * @description 高度
+     * @default 35px
      */
-    onClick?: (isOn?: boolean) => void;
+    height?: any;
     /**
-     *  @description 开关按钮显示的文字
-     *  @default
+     * @description 是否禁用
      */
-    displayText?: string;
+    disabled?: boolean;
+    /**
+     * @description 初始化状态
+     */
+    value?: boolean;
+    /**
+     * @description 点击事件
+     */
+    handleClick?: Function;
 }
-export interface SwitchStyle {
-}
-export declare type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>;

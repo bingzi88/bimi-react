@@ -1,53 +1,65 @@
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import "./demo/App.css";
-
-/**
- * Dumi Input Component
- *
- * @param {function} onChange - 回调函数，当输入框的值发生变化时触发
- * @param {string} value - 输入框的值
- * @param {string} placeholder - 输入框的占位符文本
- * @param {boolean} disabled - 是否禁用输入框
- */
-var DumiInput = function DumiInput(_ref) {
-  var onChange = _ref.onChange,
+import React, { memo } from 'react';
+import Css from "./index.module.less";
+var Input = /*#__PURE__*/memo(function (_ref) {
+  var type = _ref.type,
+    width = _ref.width,
+    height = _ref.height,
+    bordered = _ref.bordered,
+    defaultValue = _ref.defaultValue,
     value = _ref.value,
-    placeholder = _ref.placeholder,
-    disabled = _ref.disabled;
-  var _useState = useState(value),
-    _useState2 = _slicedToArray(_useState, 2),
-    inputValue = _useState2[0],
-    setInputValue = _useState2[1];
-  var handleChange = function handleChange(event) {
-    var newValue = event.target.value;
-    setInputValue(newValue);
-    onChange(newValue);
+    disabled = _ref.disabled,
+    inputBorder = _ref.inputBorder,
+    handleChange = _ref.handleChange,
+    handleBlur = _ref.handleBlur,
+    handleFcus = _ref.handleFcus;
+  var style = {
+    width: '120px',
+    height: '34px'
   };
-  return /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    className: "dumi-input",
-    value: inputValue,
-    placeholder: placeholder,
+  if (width) {
+    if (typeof width === 'string') {
+      if (width.includes('%') || width.includes('px')) {
+        style.width = width;
+      }
+    } else if (width * 1) {
+      style.width = width + 'px';
+    }
+  }
+  if (height) {
+    if (typeof height === 'string') {
+      if (height.includes('%') || height.includes('px')) {
+        style.height = height;
+      }
+    } else if (height * 1) {
+      style.height = height + 'px';
+    }
+  }
+  var className = [!bordered ? Css['bordered'] : '', !inputBorder ? Css['inputBorder'] : '', disabled ? Css['disabled'] : ''].join(' ');
+  return /*#__PURE__*/React.createElement("div", {
+    className: Css['input']
+  }, /*#__PURE__*/React.createElement("input", {
+    type: type ? type : 'text',
+    placeholder: defaultValue ? defaultValue : '请输入内容',
     disabled: disabled,
-    onChange: handleChange
-  });
-};
-DumiInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool
-};
-DumiInput.defaultProps = {
-  value: "",
-  placeholder: "",
-  disabled: false
-};
-export default DumiInput;
+    className: className,
+    style: style,
+    onChange: function onChange(e) {
+      handleChange ? handleChange({
+        value: e.target.value
+      }) : null;
+    },
+    onBlur: function onBlur(e) {
+      console.log(e.target);
+      handleBlur ? handleBlur({
+        value: e.target.value
+      }) : null;
+    },
+    onFocus: function onFocus(e) {
+      console.log(e.target);
+      handleFcus ? handleFcus({
+        value: e.target.value
+      }) : null;
+    }
+  }));
+});
+export default Input;

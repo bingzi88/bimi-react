@@ -1,25 +1,10 @@
-import React, { useState } from 'react';
-import Switch from '..';
+import React from 'react';
+import Switch from '../index';
 
-const App: React.FC = () => {
-  const [isSwitchOn, setIsSwitchOn] = useState(false);
-
-  const handleClick = (isOn: boolean) => {
-    setIsSwitchOn(isOn);
-    console.log(`Switch is ${isOn ? 'on' : 'off'}`);
-  };
-
+export default function SwitchDemo2() {
   return (
     <div>
- 
-      <Switch
-        isOn={isSwitchOn}
-        onClick={handleClick}
-        displayText={isSwitchOn ? '开启' : '关闭'} // 设置开关按钮的文字内容
-      />
-      <p><span className='open_wen'>带有文字的</span></p>
+      <Switch width={150} height={60} />
     </div>
   );
-};
-
-export default App;
+}

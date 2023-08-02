@@ -1,30 +1,38 @@
-import React from 'react';
-import "./Loading.modules.less";
-
-/**
- * Loading 组件
- * @param {string} size - 加载图标大小
- * @param {string} color - 加载图标颜色
- */
-var Loading = function Loading(_ref) {
-  var _ref$size = _ref.size,
-    size = _ref$size === void 0 ? '40px' : _ref$size,
-    _ref$color = _ref.color,
-    color = _ref$color === void 0 ? '#000' : _ref$color;
-  var containerStyle = {
-    width: size,
-    height: size
-  };
-  var spinnerStyle = {
-    borderTopColor: color,
-    borderLeftColor: color
-  };
+import React, { memo, useMemo } from 'react';
+import Css from "./index.module.less";
+var Loading = /*#__PURE__*/memo(function (props) {
+  var size = props.size,
+    text = props.text,
+    center = props.center,
+    backColor = props.backColor;
+  var LoadingStyle = useMemo(function () {
+    if (!size && size !== 'lg' && size !== 'md' && size !== 'sm' && size !== 'xs') {
+      return 'md';
+    }
+    return size;
+  }, [size]);
+  var Center = useMemo(function () {
+    if (!center) {
+      return '';
+    }
+    return 'center ';
+  }, [center]);
+  var bgColor = useMemo(function () {
+    var Color = {
+      background: ''
+    };
+    if (backColor) {
+      Color.background = backColor;
+    }
+    return Color;
+  }, [center]);
   return /*#__PURE__*/React.createElement("div", {
-    className: "loading",
-    style: containerStyle
+    className: [Css[LoadingStyle], Css['default']].join(' '),
+    style: bgColor
   }, /*#__PURE__*/React.createElement("div", {
-    className: "loading-spinner",
-    style: spinnerStyle
-  }));
-};
+    className: [Css[Center], Css['el']].join(' ')
+  }, /*#__PURE__*/React.createElement("span", {
+    className: Css['loader']
+  }), /*#__PURE__*/React.createElement("p", null, text)));
+});
 export default Loading;

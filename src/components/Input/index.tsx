@@ -1,47 +1,76 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
- import './demo/App.css'
+import React, { useMemo, FC, memo, useState } from 'react';
+import Css from './index.module.less';
+import { InputProps } from './interface';
+const Input: FC<InputProps> = memo(
+  ({
+    type,
+    width,
+    height,
+    bordered,
+    defaultValue,
+    value,
+    disabled,
+    inputBorder,
+    handleChange,
+    handleBlur,
+    handleFcus,
+  }) => {
+    let style = {
+      width: '120px',
+      height: '34px',
+    };
+    if (width) {
+      if (typeof width === 'string') {
+        if (width.includes('%') || width.includes('px')) {
+          style.width = width;
+        }
+      } else if (width * 1) {
+        style.width = width + 'px';
+      }
+    }
 
-/**
- * Dumi Input Component
- *
- * @param {function} onChange - 回调函数，当输入框的值发生变化时触发
- * @param {string} value - 输入框的值
- * @param {string} placeholder - 输入框的占位符文本
- * @param {boolean} disabled - 是否禁用输入框
- */
-const DumiInput = ({ onChange, value, placeholder, disabled }) => {
-  const [inputValue, setInputValue] = useState(value);
+    if (height) {
+      if (typeof height === 'string') {
+        if (height.includes('%') || height.includes('px')) {
+          style.height = height;
+        }
+      } else if (height * 1) {
+        style.height = height + 'px';
+      }
+    }
 
-  const handleChange = (event?:any) => {
-    const newValue = event.target.value;
-    setInputValue(newValue);
-    onChange(newValue);
-  };
+    let className: any = [
+      !bordered ? Css['bordered'] : '',
+      !inputBorder ? Css['inputBorder'] : '',
+      disabled ? Css['disabled'] : '',
+    ].join(' ');
 
-  return (
-    <input
-      type="text"
-      className="dumi-input"
-      value={inputValue}
-      placeholder={placeholder}
-      disabled={disabled}
-      onChange={handleChange}
-    />
-  );
-};
+    return (
+      <div className={Css['input']}>
+        <input
+          type={type ? type : 'text'}
+          placeholder={defaultValue ? defaultValue : '请输入内容'}
+          disabled={disabled}
+          className={className}
+          style={style}
+          onChange={(e) => {
+            (handleChange ? handleChange({ value: e.target.value }) : null)
+          }
+          }
+          onBlur={(e) => {
+            console.log(e.target);
 
-DumiInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-};
+            handleBlur ? handleBlur({ value: e.target.value }) : null;
+          }}
+          onFocus={(e) => {
+            console.log(e.target);
 
-DumiInput.defaultProps = {
-  value: "",
-  placeholder: "",
-  disabled: false,
-};
+            handleFcus ? handleFcus({ value: e.target.value }) : null;
+          }}
+        />
+      </div>
+    );
+  },
+);
 
-export default DumiInput;
+export default Input;

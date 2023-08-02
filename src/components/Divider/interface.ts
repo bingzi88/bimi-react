@@ -1,14 +1,16 @@
 export interface DividerProps {
-  // 要想文档中有 api 必须这么写注释.
   /**
-   * @description 边框样式
-   * @default solid
+   * @description 分割线中的文字
    */
-  type?: 'solid'|'dashed'|'dotted';
+  title?: any;
+  /**
+   * @description 设置分割线方向
+   * @default horizontal/vertical
+   */
+  direction?: String;
+  /**
+   * @description 设置分割线文案的位置
+   * @default left/right/center
+   */
+  contentPosition?: String;
 }
-export interface DividerStyle {
-  //button样式接口
-  width?: String;
-  position?:String;
-}
-export type NativeDividerProps = Omit<React.DividerHTMLAttributes<HTMLElement>, 'type'>;
