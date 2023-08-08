@@ -6,7 +6,7 @@ hero:
   desc: Just component, not UI
   actions:
     - text: 快速上手
-      link: /guide
+      link: /components
 
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
